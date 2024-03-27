@@ -1,6 +1,6 @@
 {
     "name": "jlevers/selling-partner-api",
-    "version": "5.5.1",
+    "version": "6.0.2",
     "description": "PHP client for Amazon's Selling Partner API",
     "keywords": [
         "api",
@@ -21,26 +21,40 @@
         }
     ],
     "require": {
-        "php": ">=7.3",
+        "php": ">=8.1",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
+        "composer/semver": "^3.4",
         "guzzlehttp/guzzle": "^6.0|^7.0",
-        "phpoffice/phpspreadsheet": "^1.19",
-        "aws/aws-sdk-php": "^3.185"
+        "highsidelabs/saloon-sdk-generator": "^1.0",
+        "saloonphp/saloon": "^3.4",
+        "openspout/openspout": "^4.23",
+        "illuminate/support": "^10.48"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0 || ^9.0",
-        "friendsofphp/php-cs-fixer": "^3.4"
+        "symfony/console": "^6.3",
+        "psy/psysh": "^0.11.22",
+        "voku/simple_html_dom": "^4.8",
+        "laravel/pint": "^1.13"
     },
     "autoload": {
-        "psr-4": { "SellingPartnerApi\\" : "lib/" }
+        "psr-4": {
+            "SellingPartnerApi\\": "src/"
+        },
+        "files": [
+            "src/Generator/constants.php"
+        ]
     },
     "autoload-dev": {
-        "psr-4": { "SellingPartnerApi\\Tests\\" : "test/" }
+        "psr-4": {
+            "SellingPartnerApi\\Tests\\": "test/"
+        }
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "lint": "vendor/bin/php-cs-fixer fix"
+        "clean": "rm -rf docs src/models/*/* src/apis/*/*/*",
+        "format": "php vendor/bin/pint"
     }
 }
